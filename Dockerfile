@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM debian:stretch-slim
+FROM debian:jessie
 
 # Install Nginx.
 RUN \
