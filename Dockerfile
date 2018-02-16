@@ -1,19 +1,14 @@
-#
-# Nginx Dockerfile
-#
-# https://github.com/dockerfile/nginx
-#
-# Pull base image.
-FROM nginx:1.12
+FROM debian:jessie
+
+RUN apt-get update && apt-get install -y \
+    nginx
 
 ADD nginx.conf /etc/nginx/
 
 RUN echo "upstream php-upstream { server php:9000; }" > /etc/nginx/conf.d/upstream.conf
 
 RUN usermod -u 1000 www-data
-CMD rm /etc/nginx/sites-enabled/default
-# Define default command.
-CMD ["nginx"]
 
-EXPOSE 80
-EXPOSE 443
+ADD entrypoint.sh /usr/bin/entrypoint.sh
+CMD sh /usr/bin/entrypoint.sh
+CMD ["nginx"]
