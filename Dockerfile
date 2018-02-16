@@ -8,8 +8,5 @@ FROM nginx:1.12
 
 ADD nginx.conf /etc/nginx/
 
-# Define working directory.
-WORKDIR /etc/nginx
-
 # Define default command.
 CMD ["nginx"]
