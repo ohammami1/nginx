@@ -10,4 +10,4 @@ ADD nginx.conf /etc/nginx/
 
 RUN usermod -u 1000 www-data
 
-ENTRYPOINT ["sh", "-c", "entrypoint.sh"]
+CMD ["nginx"]
