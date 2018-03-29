@@ -11,6 +11,7 @@ if ! [ -f ${DIST_FILE} ]; then
 fi
 
 mkdir -p /etc/nginx/sites-enabled
+
 cp ${DIST_FILE} ${CONF_FILE}
 
 for i in ${ENV_NAMES}; do 
