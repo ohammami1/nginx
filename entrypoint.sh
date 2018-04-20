@@ -4,6 +4,7 @@ ENV_NAMES=$(export | cut -d' ' -f 3- | cut -d'=' -f 1)
 
 DIST_FILE=/etc/nginx/dist/project-site.conf.dist
 CONF_FILE=/etc/nginx/sites-enabled/project-site.conf
+LOG_PATH=/var/log/nginx
 
 if ! [ -f ${DIST_FILE} ]; then
 	echo "File not found, exiting..."
@@ -25,5 +26,8 @@ done
 if cat ${CONF_FILE} | grep '__' >/dev/null 2>&1 ; then
 	echo "Warning: They're still unbound variables in ${CONF_FILE}, you probabely didn't define those in your environment section"
 fi
+
+chmod a+rw /var/log/nginx/$NGINX_LOG_PREFIX*.log
+chmod a+rw /var/log/nginx/error.log
 
 exec "$@"
