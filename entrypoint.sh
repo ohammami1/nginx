@@ -34,5 +34,6 @@ touch /var/log/nginx/error.log
 
 chmod a+rw /var/log/nginx/${NGINX_LOG_PREFIX}*.log
 chmod a+rw /var/log/nginx/error.log
+chmod a+rw /var/log/nginx
 
 exec "$@"
